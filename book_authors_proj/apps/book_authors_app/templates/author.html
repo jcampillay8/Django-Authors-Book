@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Books & Authors</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <style>
-            body{
-                margin: 50px;
-            }
-            div, a{
-                display: inline-block;
-                vertical-align: top;
-            }
-            div{
-                width: 500px;
-                margin-right: 200px;
-            }
-        </style>
-    </head>
-    <body>
-        <div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style_author.css' %}">
+    
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
             <h2>{{ this_author.first_name }} {{ this_author.last_name }}</h2>
+        </div>
+        <section class='book_desc'>
             <p>ID: {{ this_author.id }}</p>
             <p>Notes: {{ this_author.notes }}</p>
             <p>Books:</p>
@@ -28,6 +23,8 @@
                 <li>{{ book.title }}</li>
                 {% endfor %}
             </ul>
+        </section>
+        <div class="forma">
             <form action='/add_book_to_auth/{{ this_author.id }}' method='post'>
                 {% csrf_token %}
                 <select name="book_id">
@@ -37,8 +34,8 @@
                 </select>
                 <input type="submit" value="Add">
             </form>
-            
         </div>
         <a href="/authors">Back</a>
-    </body>
+    </div>
+</body>
 </html>
