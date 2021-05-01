@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Books & Authors</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <style>
+            body{
+                padding: 25px;
+            }
+            div{
+                margin: 50px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            textarea{
+                height: 75px;
+                width: 150px;
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/authors">Authors Page</a>
+        <div>
+            <h2>Add a Book</h2>
+            <form action='/add_book' method='post'>
+                {% csrf_token %}
+                <p>Title: <input type="text" name="title"></p>
+                <p>Description: <textarea name="desc"></textarea></p>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <td>ID</td>
+                        <td>Title</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in all_books %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a href="/books/{{ book.id }}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

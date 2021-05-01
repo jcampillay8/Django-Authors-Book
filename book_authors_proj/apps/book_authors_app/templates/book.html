@@ -31,7 +31,7 @@
             <form action='/add_auth_to_book/{{ this_book.id }}' method='post'>
                 {% csrf_token %}
                 <select name="auth_id">
-                    {% for auth in non_associate_authors %}
+                    {% for auth in non_associate_author %}
                     <option value="{{ auth.id }}">{{ auth.first_name }} {{ auth.last_name }}</option>
                     {% endfor %}
                 </select>

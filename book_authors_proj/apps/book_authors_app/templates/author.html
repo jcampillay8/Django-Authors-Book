@@ -19,19 +19,19 @@
     </head>
     <body>
         <div>
-            <h2>{{ thisAuthor.first_name }} {{ thisAuthor.last_name }}</h2>
-            <p>ID: {{ thisAuthor.id }}</p>
-            <p>Notes: {{ thisAuthor.notes }}</p>
+            <h2>{{ this_author.first_name }} {{ this_author.last_name }}</h2>
+            <p>ID: {{ this_author.id }}</p>
+            <p>Notes: {{ this_author.notes }}</p>
             <p>Books:</p>
             <ul>
-                {% for book in assoc_books %}
+                {% for book in associate_books %}
                 <li>{{ book.title }}</li>
                 {% endfor %}
             </ul>
-            <form action='/add_book_to_auth/{{ thisAuthor.id }}' method='post'>
+            <form action='/add_book_to_auth/{{ this_author.id }}' method='post'>
                 {% csrf_token %}
                 <select name="book_id">
-                    {% for book in non_assoc_books %}
+                    {% for book in non_associate_books %}
                     <option value="{{ book.id }}">{{ book.title }}</option>
                     {% endfor %}
                 </select>
