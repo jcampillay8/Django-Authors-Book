@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Books & Authors</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <style>
+            body{
+                margin: 50px;
+            }
+            div, a{
+                display: inline-block;
+                vertical-align: top;
+            }
+            div{
+                width: 500px;
+                margin-right: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>{{ thisBook.title }}</h2>
+            <p>ID: {{ thisBook.id }}</p>
+            <p>Description: {{ thisBook.desc }}</p>
+            <p>Authors:</p>
+            <ul>
+                {% for auth in assoc_authors %}
+                <li>{{ auth.first_name }} {{ auth.last_name }}</li>
+                {% endfor %}
+            </ul>
+            <form action='/add_auth_to_book/{{ thisBook.id }}' method='post'>
+                {% csrf_token %}
+                <select name="auth_id">
+                    {% for auth in non_assoc_authors %}
+                    <option value="{{ auth.id }}">{{ auth.first_name }} {{ auth.last_name }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+            </form>
+            
+        </div>
+        <a href="/">Back</a>
+    </body>
+</html>
