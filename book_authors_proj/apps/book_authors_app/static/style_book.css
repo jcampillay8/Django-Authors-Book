@@ -1,0 +1,53 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background: #E9ECF4;
+    color:#000;
+    font-family: 'Roboto', sans-serif;
+}
+.contenedor{
+    width:90%;
+    max-width: 1200px;
+    margin:20px auto;
+    display: grid;
+    grid-gap:10px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(6,auto);
+}
+
+.contenedor .header,
+.contenedor .book_desc,
+.contenedor .tabla{
+    background: #fff;
+    padding: 20px;
+}
+
+.contenedor .header{
+    text-decoration: none;
+    background: #1a1a1a;
+    color: #fff;
+    grid-column:1/5;
+    display: flex;  
+    align-content: flex-start;
+}
+
+.contenedor .header a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.contenedor .book_desc{
+    grid-column:1/5;
+}
+
+p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+ul{
+    margin-left: 10px;
+}
